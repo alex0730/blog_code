@@ -11,7 +11,7 @@
 <body>
 <div class="header">
     <div class="left-blog-name">
-        <a href="#">${sysInfo.webname}</a>
+        <a href="#">我的博客</a>
     </div>
     <div class="nav-bar">
         <div class="nav-bar-header">
@@ -41,7 +41,7 @@
         <div class="nav-bar-search">
             <form>
                 <div class="nav-bar-search-content">
-                    <input type="text" id="search_content"  placeholder="搜搜文章">
+                    <input type="text" id="search_content" placeholder="搜搜文章">
                     <button type="button" id="search_button"><i class="fa fa-search fa-fw"></i></button>
                 </div>
             </form>
@@ -53,11 +53,19 @@
                 </a>
             </li>
             <#list cateList as cate>
-                <li>
-                    <a href="/cate/${cate.id}">
-                        <i class="fa  fa-caret-right fa-fw"></i>${cate.catename}
-                    </a>
-                </li>
+                <#if cate.id != 5>
+                    <li>
+                        <a href="/cate/${cate.id}">
+                            <i class="fa  fa-caret-right fa-fw"></i>${cate.catename}
+                        </a>
+                    </li>
+                <#else>
+                    <li>
+                        <a href="/pic/list">
+                            <i class="fa  fa-caret-right fa-fw"></i>照片墙
+                        </a>
+                    </li>
+                </#if>
             </#list>
         </ul>
     </div>

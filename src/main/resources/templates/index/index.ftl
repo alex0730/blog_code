@@ -35,34 +35,33 @@
     });
 
 
-
     function initPageList(current) {
         var cate = $("#cateid");
         var cateid = -1;
         var searchKey = '';
-        if($("#searchKey")) {
+        if ($("#searchKey")) {
             searchKey = $("#searchKey").val();
-            $("#search_content").val( $("#searchKey").val());
+            $("#search_content").val($("#searchKey").val());
         }
-        if(cate) {
+        if (cate) {
             cateid = cate.val();
         }
         $.ajax({
-            url:'/findList',
-            type:'post',
-            data:{page:current,size:size,cateid:cateid,searchKey:searchKey},
-            dataType:'json',
-            success:function (data) {
-                if(data) {
+            url: '/findList',
+            type: 'post',
+            data: {page: current, size: size, cateid: cateid, searchKey: searchKey},
+            dataType: 'json',
+            success: function (data) {
+                if (data) {
                     var total = data.total;//数据总数
                     $("#total_num").text(total);
                     var rows = data.rows;
                     initListContent(rows);
-                    var pageTotal = Math.ceil(total/size);
+                    var pageTotal = Math.ceil(total / size);
                     console.info(pageTotal);
                     $("#content_page").pagination({
-                        pageCount:pageTotal,
-                        current:current,
+                        pageCount: pageTotal,
+                        current: current,
                         showData: size,
                         mode: 'unfixed',
                         jump: false,
@@ -79,17 +78,17 @@
         });
     }
 
-    function initListContent(rows){
+    function initListContent(rows) {
         var listHtml = '';
-        if(rows != null && rows.length > 0) {
-            for(var i = 0 ; i < rows.length; i ++) {
+        if (rows != null && rows.length > 0) {
+            for (var i = 0; i < rows.length; i++) {
                 var article = rows[i];
                 listHtml +=
-                    '<li>'+
-                    '<div class="title">'+
-                    '<a href="/article/'+article.id+'">'+ article.title +'</a>'+
-                    '</div>'+
-                    '<div class="info">作者：'+article.authorname+' 发布时间：'+article.create_time+' 阅读量：'+article.viewnum+' 评论数：'+article.commentnum +'</div>'+
+                    '<li>' +
+                    '<div class="title">' +
+                    '<a href="/article/' + article.id + '">' + article.title + '</a>' +
+                    '</div>' +
+                    '<div class="info">作者：' + article.authorname + ' 发布时间：' + article.create_time + ' 阅读量：' + article.viewnum + ' 评论数：' + article.commentnum + '</div>' +
                     '</li>';
             }
         } else {
