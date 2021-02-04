@@ -2,6 +2,7 @@ package com.lee.controller.index;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.lee.common.DataGrid;
 import com.lee.common.Message;
@@ -11,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +35,15 @@ public class PictureController extends BasicController {
     private PictureService pictureService;
 
     @GetMapping("list")
-    public String list() {
+    public String list(Model model) {
+        try {
+            QueryWrapper<PictureModel> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("status",0);
+            queryWrapper.orderByAsc("sort");
+            model.addAttribute("pictureList", pictureService.list(queryWrapper));
+        } catch (Exception e) {
+            logger.error("查询照片异常");
+        }
         return "index/photoWall";
     }
 

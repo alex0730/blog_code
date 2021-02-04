@@ -1,6 +1,6 @@
 @charset "UTF-8";
 body{
-    background: url("../image/pinpu.jpg");
+    background: url("/static/index/img/pinpu.jpg");
 }
 h1{
     text-align: center;
