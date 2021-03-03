@@ -3,12 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>${sysInfo.webname}</title>
+    <script type="text/javascript" src="/static/index/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/static/index/js/jquery-3.3.1.js"></script>
     <link href="/static/index/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="/static/index/plugins/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="/static/index/plugins/pagination/pagination.css" rel="stylesheet">
     <link href="/static/index/css/lee-blog.css" rel="stylesheet">
+    <link href="/static/index/css/waifu.css" rel="stylesheet">
 </head>
 <body>
+<script src="/static/index/js/autoload.js"></script>
+<div class="waifu">
+    <canvas id="live2d" class="live2d"></canvas>
+    <div class="waifu-tool">
+        <span class="fui-home"></span>
+        <span class="fui-chat"></span>
+        <span class="fui-eye"></span>
+        <span class="fui-user"></span>
+        <span class="fui-photo"></span>
+        <span class="fui-info-circle"></span>
+        <span class="fui-cross"></span>
+    </div>
+    <script src="/static/index/js/waifu-tips.js"></script>
+    <script src="/static/index/js/live2d.js"></script>
+
+    <script type="text/javascript">
+        live2d_settings['modelId'] = 1;
+        live2d_settings['modelTexturesId'] = 87;
+        initModel("/static/index/js/waifu-tips.json")
+    </script>
+</div>
 <div class="header">
     <div class="left-blog-name">
         <a href="#">我的博客</a>

@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-lg-8 col-md-12">
                 <ul class="content-list" id="content-list" style="width: 475px">
-                    <div class="container" style="width: 76px">
+                    <div class="ImageBox container" style="width: 76px">
                         <#list pictureList as photo>
                             <img src="http://192.168.80.128/${photo.picUrl}" class="i${photo_index + 1}" alt="">
                         </#list>
@@ -34,7 +34,7 @@
                         <#--<img src="/static/index/img/20.jpg" class="i20" alt="">-->
                     </div>
                     <div class="png">
-                        <img src="../img/-1.gif" class="i22" alt="">
+                        <img src="/static/index/img/-1.gif" class="i22" alt="">
                     </div>
                 </ul>
             </div>
